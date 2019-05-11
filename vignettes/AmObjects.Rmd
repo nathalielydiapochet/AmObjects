@@ -1,0 +1,39 @@
+---
+title: "AmObjects: Systematic data structures for AMARETTO"
+author: "AMARETTO team"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+vignette: >
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteIndexEntry{AMARETTO S4 Object Design Considerations}
+  %\VignetteEncoding{UTF-8}
+output:
+  BiocStyle::html_document:
+    highlight: pygments
+    number_sections: yes
+    theme: united
+    toc: yes
+---
+
+# Introduction
+
+The general problem of multiomic data integration leads to
+unusual situations of data volume, complexity, and annotation.
+Metrics for comparing solutions are not readily available.
+
+In the AmObjects package we use R's S4 object design
+disciplines to hide complexity from end-users and to
+provide hints so that model setup and results are easily
+used in workflows that will evolve over time.
+
+# Initializing the AMARETTO procedures
+
+In the following, `iniobj` is a lossless representation
+of the `TCGA-LIHC_AMARETTOinit` constructed as a
+small test case.
+```{r chk1}
+library(AmObjects)
+origlist = AmObjects::LIHC_AMARETTOinit
+names(origlist)
+iniobj = AmInit(origlist)
+iniobj
+```

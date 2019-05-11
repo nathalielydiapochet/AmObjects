@@ -1,0 +1,15 @@
+Package: AmObjects
+Title: Object design (S4) for AMARETTO
+Description: Object design (S4) for AMARETTO
+Version: 0.0.0
+Author: Amaretto team
+Suggests: knitr, BiocStyle
+Depends: R (>= 3.5.0), methods
+Maintainer: VJ Carey <stvjc@channing.harvard.edu>
+License: Artistic-2.0
+LazyLoad: yes
+LazyData: yes
+biocViews: Software, Infrastructure, Transcriptomics
+VignetteBuilder: knitr
+RoxygenNote: 6.1.1
+Encoding: UTF-8
