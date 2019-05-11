@@ -1,7 +1,7 @@
 Package: AmObjects
 Title: Object design (S4) for AMARETTO
 Description: Object design (S4) for AMARETTO
-Version: 0.0.0
+Version: 0.0.1
 Author: Amaretto team
 Suggests: knitr, BiocStyle
 Depends: R (>= 3.5.0), methods

@@ -37,3 +37,12 @@ names(origlist)
 iniobj = AmInit(origlist)
 iniobj
 ```
+
+# Representing AMARETTO results
+
+```{r chk2}
+reslist = AmObjects::LIHC_AMARETTOresults
+names(reslist)
+resobj = AmResults(reslist)
+resobj
+```

@@ -50,6 +50,48 @@ setMethod("show", "AmInit", function(object) {
   cat("...\n") # give more hints!? alterations has substructure!
 })
 
-
 setClass("AmResults", representation(
-      content="list"))
+      NrModules="integer",
+      RegulatoryPrograms="matrix",
+      AllRegulators="character",
+      AllGenes="character",
+      ModuleMembership="matrix",
+      AutoRegulationReport="matrix",
+      ModuleData="matrix",
+      RegulatoryProgramData="matrix"))
+
+#' constructor for AMARETTO results object
+#' @param reslist list with obligatory components
+#' @examples
+#' res = AmObjects::LIHC_AMARETTOresults
+#' AmResults(res)
+#' @export
+AmResults = function(reslist) {
+  oblig = c("NrModules", "RegulatoryPrograms", 
+   "AllRegulators", "AllGenes", "ModuleMembership", 
+   "AutoRegulationReport", "ModuleData", "RegulatoryProgramData")
+  stopifnot(all(oblig %in% names(reslist)))
+  new("AmResults", 
+      NrModules=reslist$NrModules,
+      RegulatoryPrograms=reslist$RegulatoryPrograms,
+      AllRegulators=reslist$AllRegulators,
+      AllGenes=reslist$AllGenes,
+      ModuleMembership=reslist$ModuleMembership,
+      AutoRegulationReport=reslist$AutoRegulationReport,
+      ModuleData=reslist$ModuleData,
+      RegulatoryProgramData=reslist$RegulatoryProgramData)
+}
+
+setMethod("show", "AmResults", function(object) {
+  cat(sprintf("AMARETTO Results object with %d modules:\n", object@NrModules))
+  md = getSlots(getClass(class(object)))
+  cat(" key components are:\n")
+  drp = dim(slot(object, "RegulatoryPrograms")) 
+  dmm = dim(slot(object, "ModuleMembership"))
+  cat(sprintf("   RegulatoryPrograms (%d x %d)\n",
+       drp[1], drp[2]))
+  cat(sprintf("   ModuleMembership (%d x %d)\n",
+       dmm[1], dmm[2]))
+  cat("...\n") # give more hints!? could also give info on initialization
+# if you wanted to carry that into the results
+})
